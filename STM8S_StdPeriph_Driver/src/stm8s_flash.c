@@ -567,29 +567,29 @@ FlagStatus FLASH_GetFlagStatus(FLASH_Flag_TypeDef FLASH_FLAG)
    erased or corrupted, so it may be desirable to perform the copy again. 
    Depending on the application memory model, the memcpy() or fmemcpy() functions
    should be used to perform the copy.
-      ? In case your project uses the SMALL memory model (code smaller than 64K),
+      • In case your project uses the SMALL memory model (code smaller than 64K),
        memcpy()function is recommended to perform the copy
-      ? In case your project uses the LARGE memory model, functions can be 
+      • In case your project uses the LARGE memory model, functions can be 
       everywhere in the 24-bits address space (not limited to the first 64KB of
       code), In this case, the use of memcpy() function will not be appropriate,
       you need to use the specific fmemcpy() function (which copies objects with
       24-bit addresses).
       - The linker automatically defines 2 symbols for each inram function:
-           ? __address__functionname is a symbol that holds the Flash address 
+           • __address__functionname is a symbol that holds the Flash address 
            where the given function code is stored.
-           ? __size__functionname is a symbol that holds the function size in bytes.
+           • __size__functionname is a symbol that holds the function size in bytes.
      And we already have the function address (which is itself a pointer)
   4- In main.c file these two steps should be performed for each inram function:
-     ? Import the "__address__functionname" and "__size__functionname" symbols
+     • Import the "__address__functionname" and "__size__functionname" symbols
        as global variables:
          extern int __address__functionname; // Symbol holding the flash address
          extern int __size__functionname;    // Symbol holding the function size
-     ? In case of SMALL memory model use, Call the memcpy() function to copy the
+     • In case of SMALL memory model use, Call the memcpy() function to copy the
       inram function to the RAM destination address:
                 memcpy(functionname, // RAM destination address
                       (void*)&__address__functionname, // Flash source address
                       (int)&__size__functionname); // Code size of the function
-     ? In case of LARGE memory model use, call the fmemcpy() function to copy 
+     • In case of LARGE memory model use, call the fmemcpy() function to copy 
      the inram function to the RAM destination address:
                  memcpy(functionname, // RAM destination address
                       (void @far*)&__address__functionname, // Flash source address

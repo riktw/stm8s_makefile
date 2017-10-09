@@ -1,25 +1,9 @@
- /* Includes ------------------------------------------------------------------*/
 #include "stm8s.h"
-
-/**
-  * @addtogroup GPIO_Toggle
-  * @{
-  */
-
-/* Private typedef -----------------------------------------------------------*/
-/* Private define ------------------------------------------------------------*/
-/* Evalboard I/Os configuration */
 
 #define LED_GPIO_PORT  (GPIOD)
 #define LED_GPIO_PINS  (GPIO_PIN_0)
 
-/* Private macro -------------------------------------------------------------*/
-/* Private variables ---------------------------------------------------------*/
-/* Private function prototypes -----------------------------------------------*/
 void Delay (uint16_t nCount);
-
-/* Private functions ---------------------------------------------------------*/
-/* Public functions ----------------------------------------------------------*/
 
 /**
   * @brief  Main program.
@@ -75,9 +59,3 @@ void assert_failed(uint8_t* file, uint32_t line)
   }
 }
 #endif
-
-/**
-  * @}
-  */
-
-

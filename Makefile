@@ -24,7 +24,7 @@ DRIVER_DIR = ./STM8S_StdPeriph_Driver/
 SPL_SRC_DIR = $(DRIVER_DIR)src
 SPL_INC_DIR = $(DRIVER_DIR)inc
 
-OBJLIB = $(OUTPUT_DIR)/stm8s_stdlib.a
+OBJLIB = $(OUTPUT_DIR)/stm8s103.lib
 
 SRC_FILES = $(SPL_SRC_DIR)/stm8s_awu.c $(SPL_SRC_DIR)/stm8s_beep.c $(SPL_SRC_DIR)/stm8s_clk.c $(SPL_SRC_DIR)/stm8s_exti.c $(SPL_SRC_DIR)/stm8s_flash.c $(SPL_SRC_DIR)/stm8s_gpio.c $(SPL_SRC_DIR)/stm8s_i2c.c $(SPL_SRC_DIR)/stm8s_itc.c $(SPL_SRC_DIR)/stm8s_iwdg.c $(SPL_SRC_DIR)/stm8s_rst.c $(SPL_SRC_DIR)/stm8s_spi.c $(SPL_SRC_DIR)/stm8s_tim1.c $(SPL_SRC_DIR)/stm8s_wwdg.c
 
@@ -64,10 +64,10 @@ OBJ_FILES =  $(OBJ_FILES1:$(SPL_SRC_DIR)%=%)
 
 # set compiler path & parameters 
 CC_ROOT =
-CC      = sdcc
-AR 	= sdar
+CC      = sdcc-3.6
+AR 	= sdar-3.6
 CFLAGS  = -mstm8 -lstm8 --opt-code-size -l$(OBJLIB) -DUSE_STDPERIPH_DRIVER
-CLFLAGS = -mstm8 -I$(INC_DIR) -I./Inc -D$(DEVICE) -c
+CLFLAGS = -mstm8 -I$(INC_DIR) -I./Inc --opt-code-size -D$(DEVICE) -c
 ARFLAGS = -rc
 
 # collect all include folders
@@ -92,12 +92,10 @@ $(TARGET): $(PRJ_OBJECTS)
 flash: $(TARGET)
 	stm8flash -c stlink -p $(DEVICE_FLASH) -s flash -w $(TARGET)
 
-$(OBJLIB): $(addprefix $(OUTPUT_DIR), $(OBJ_FILES))
-	@echo "---- Linking *.rel files into library"
-	$(AR) $(ARFLAGS) $(OBJLIB) $^
-
-$(OUTPUT_DIR)%.rel: $(SRC_DIR)/%.c
-	$(CC) -o $@ $(CLFLAGS) $^
+$(OBJLIB):
+	cd STM8S_StdPeriph_Driver/src/; \
+	./doit; \
+	mv stm8s103.lib ../../build
 
 clean:
 	rm $(OUTPUT_DIR)/*

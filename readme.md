@@ -14,3 +14,4 @@ The output file (blinky.ihx) can be found in the build folder.
 The example project blinks the on board LED on the stm8x003 discovery board (pin PD0 to be precise)
 
 Everything is GPLv3 licensed unless stated otherwise in the file itself, the stm8s peripheral driver has it's own license for example.
+Exeption, and credit where credit is due: The files in STM8S_StdPeriph_Driver are made by ST and the patches and scripts/makefiles are made by SDuino: https://github.com/tenbaht/sduino
