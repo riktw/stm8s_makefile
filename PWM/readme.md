@@ -16,9 +16,9 @@ Timer 1 channel 4: PC_4
 
 Timer 2 channel 1: PD_4
 
-Timer 2 channel 1: PD_3
+Timer 2 channel 2: PD_3
 
-Timer 2 channel 1: PA_3
+Timer 2 channel 3: PA_3
 
 
 For this example the 4 normal outputs of timer 1 are used to generate 4 PWM signals, 50, 37,5, 25 and 12,5% duty cycle.
