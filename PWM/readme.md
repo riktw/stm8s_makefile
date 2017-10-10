@@ -18,4 +18,4 @@ The 3 channels of timer 2 are used for 75, 50 and 25% pwm outputs, giving you a 
 
 The 4th output of TIM1 and the 3th output of TIM2 are changed on the fly between two values, to demonstrate that as well, when the LED turns on or off, the values change, making is easier to show on a logic analyzer:
 
-![alt text](https://github.com/riktw/stm8s_makefile/PWM/LA.png "7 PWM's at one!")
+![alt text](https://github.com/riktw/stm8s_makefile/blob/master/PWM/LA.png "7 PWM's at one!")
