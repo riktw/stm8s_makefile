@@ -5,6 +5,7 @@ Channel 4 only has 1 output though.
 Timer2 has 3 outputs, channel 1, 2 and 3, no complementaty outputs.
 
 The following IO's are used:
+
 Timer 1 channel 1: PC_1
 
 Timer 1 channel 2: PC_2
