@@ -15,3 +15,11 @@ The example project blinks the on board LED on the stm8x003 discovery board (pin
 
 Everything is GPLv3 licensed unless stated otherwise in the file itself, the stm8s peripheral driver has it's own license for example.
 Exeption, and credit where credit is due: The files in STM8S_StdPeriph_Driver are made by ST and the patches and scripts/makefiles are made by SDuino: https://github.com/tenbaht/sduino
+
+20/09/2018:
+I managed to get GDB up and running, I updated the makefile to support this.
+By default, the makefile now generates a .elf file for the stm8 GDB tools (https://stm8-binutils-gdb.sourceforge.io/) 
+It also only compiles the library once, which saves some time. To rebuild this, delete the .lib file from the /Inc folder. 
+To build an ihx file to flash using stm8flash, use "make NODEBUG=1" and to build and directly program it, use "make NODEBUG=1 flash"
+
+Eclipse .cproject and .project files are also included, so you "should" be able to import it into eclipse and have a working enviroment. Your mileage may vary.
