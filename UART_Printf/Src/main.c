@@ -16,6 +16,7 @@ void main(void)
               UART1_SYNCMODE_CLOCK_DISABLE, UART1_MODE_TXRX_ENABLE);
 
   printf("Printf with an STM8S is remarably easy :D\n");
+  printf("Now with the added bonus of GDB debugging :D\n");
   printf("Enter text now and it will be echoed with a newline added\n");
 
   while (1)
@@ -44,24 +45,3 @@ int getchar(void)
   return (c);
 }
 
-
-#ifdef USE_FULL_ASSERT
-
-/**
-  * @brief  Reports the name of the source file and the source line number
-  *   where the assert_param error has occurred.
-  * @param file: pointer to the source file name
-  * @param line: assert_param error line source number
-  * @retval None
-  */
-void assert_failed(uint8_t* file, uint32_t line)
-{ 
-  /* User can add his own implementation to report the file name and line number,
-     ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
-
-  /* Infinite loop */
-  while (1)
-  {
-  }
-}
-#endif

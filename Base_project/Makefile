@@ -31,10 +31,10 @@ OBJLIBNDB = $(PRJ_INC_DIR)/stm8s003nodebug.lib
 CC      = sdcc
 AR 	= sdar
 ifeq ($(NODEBUG), 1)
-    CFLAGS =-mstm8  -l$(OBJLIBNDB) --out-fmt-ihx -DUSE_STDPERIPH_DRIVER --all-callee-saves --verbose --stack-auto --fverbose-asm  --float-reent --no-peep
+    CFLAGS =-mstm8  -l$(OBJLIBNDB) --out-fmt-ihx -DUSE_STDPERIPH_DRIVER --all-callee-saves --verbose --stack-auto --fverbose-asm --no-peep
     TARGET = $(OUTPUT_DIR)/$(TARGETNAME).ihx
 else
-	CFLAGS =-mstm8  -l$(OBJLIB) --debug --out-fmt-elf -DUSE_STDPERIPH_DRIVER --all-callee-saves --verbose --stack-auto --fverbose-asm  --float-reent --no-peep
+	CFLAGS =-mstm8  -l$(OBJLIB) --debug --out-fmt-elf -DUSE_STDPERIPH_DRIVER --all-callee-saves --verbose --stack-auto --fverbose-asm --no-peep
     TARGET = $(OUTPUT_DIR)/$(TARGETNAME).elf
 endif
 
